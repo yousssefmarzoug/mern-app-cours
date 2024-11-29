@@ -14,7 +14,10 @@ import courseRoutes from './routes/courseRoutes.js';
 connectToDatabase();
 const app = express();
 app.use(express.json());
-app.use(cors());
+//app.use(cors());
+const allowedOrigins = ['http://193.203.169.135', 'http://localhost:5000'];
+app.use(cors({ origin: allowedOrigins, credentials: true }));
+
 
 
 app.use('/api/users', userRoutes);
