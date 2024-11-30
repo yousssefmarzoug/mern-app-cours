@@ -13,6 +13,7 @@ import {
 	Text,
 	useToast,
 } from '@chakra-ui/react';
+import apiClient from '../redux/utils/api';
 import { Formik } from 'formik';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -23,7 +24,7 @@ import PasswordForgottenForm from '../components/PasswordForgottenForm';
 import TextField from '../components/TextField';
 import { login, googleLogin } from '../redux/actions/userActions';
 import { useGoogleLogin } from '@react-oauth/google';
-import axios from 'axios';
+
 import { FcGoogle } from 'react-icons/fc';
 
 const LoginScreen = () => {
@@ -61,7 +62,7 @@ const LoginScreen = () => {
 
 	const handleGoogleLogin = useGoogleLogin({
 		onSuccess: async (response) => {
-			const userInfo = await axios
+			const userInfo = await apiClient
 				.get('https://www.googleapis.com/oauth2/v1/certs', {
 					headers: { Authorization: `Bearer ${response.access_token}` },
 				})
