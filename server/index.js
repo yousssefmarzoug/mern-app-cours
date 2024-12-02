@@ -15,7 +15,7 @@ connectToDatabase();
 const app = express();
 app.use(express.json());
 //app.use(cors());
-const allowedOrigins = ['http://193.203.169.135', 'http://localhost:5000'];
+const allowedOrigins = ['http://193.203.169.135', 'http://localhost:5000','http://youssefmarzoug.website','https://youssefmarzoug.website'];
 app.use(cors({ origin: allowedOrigins, credentials: true }));
 
 
